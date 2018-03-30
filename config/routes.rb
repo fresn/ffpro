@@ -7,14 +7,10 @@ Rails.application.routes.draw do
 
   get '/contact', to: 'static_pages#contact'
 
+ # get '/register', to: 'customer/registrations#new'
+
   devise_for :customers,
              singular: :customer,
-             path: "/", path_names:
-                 {
-                     sign_in: "login",
-                     sign_out: "logout",
-                     sign_up: "register"
-                 },
              controllers:{
                  sessions:'customer/sessions'
              }
