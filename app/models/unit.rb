@@ -1,5 +1,19 @@
 class Unit
   attr_reader :name, :value
+
+  def self.get_units_under_kind kind_name
+    res=UnitBackend.where(kind: kind_name)
+    list=Array.new
+    if res.none?
+      raise Exception.new("kind #{kind_name} not found")
+    else
+      res.each do |item|
+        list << item.name
+      end
+      list
+    end
+  end
+
   def initialize(unit_name, value)
     res = UnitBackend.where(name: unit_name)
     if res.none?
@@ -35,6 +49,7 @@ class Unit
     end
     conventable_list
   end
+
 
 
   private
