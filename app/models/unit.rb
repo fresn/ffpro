@@ -49,10 +49,4 @@ class Unit
     end
     conventable_list
   end
-
-
-
-  private
-
-
 end
