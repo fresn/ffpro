@@ -1,0 +1,2 @@
+class ProductSellable < Product
+end

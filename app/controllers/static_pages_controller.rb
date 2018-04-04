@@ -1,9 +1,7 @@
 class StaticPagesController < ApplicationController
   before_action :authenticate_customer!
   def home
-    @user=current_customer
-    @conf=ActiveAdmin::Devise.config
-    @page_title="Home"
+    @products = ProductSellable.limit 16
   end
 
   def about

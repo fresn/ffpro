@@ -1,0 +1,2 @@
+class ProductBuyable < Product
+end

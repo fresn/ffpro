@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'activeadmin'
-
+gem "active_admin_import" , '3.0.0'
 # Plus integrations with:
 gem 'devise'
 gem 'cancan' # or cancancan
