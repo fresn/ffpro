@@ -1,9 +1,14 @@
 class Unit
   attr_reader :name, :value
 
-  def self.get_units_under_kind kind_name
-    res=UnitBackend.where(kind: kind_name)
-    list=Array.new
+  def self.get_units_under_kind kind_name = nil
+    res = if kind_name.nil?
+            UnitBackend.all
+          else
+            UnitBackend.where(kind: kind_name)
+          end
+
+    list = Array.new
     if res.none?
       raise Exception.new("kind #{kind_name} not found")
     else
@@ -19,10 +24,10 @@ class Unit
     if res.none?
       raise Exception.new(unit_name + " not found")
     else
-      @name=res[0].name
-      @value=value
-      @kind=res[0].kind
-      @to_default_rate=res[0].ToDefaultRate
+      @name = res[0].name
+      @value = value
+      @kind = res[0].kind
+      @to_default_rate = res[0].ToDefaultRate
     end
   end
 
@@ -31,19 +36,19 @@ class Unit
   end
 
   def to_(name)
-    res=UnitBackend.where(name: name)
+    res = UnitBackend.where(name: name)
     if res.none?
       raise Exception.new(unit_name + " not found")
     else
-      target_to_default_rate=res[0].ToDefaultRate
+      target_to_default_rate = res[0].ToDefaultRate
     end
-    to_default_rate=@to_default_rate
+    to_default_rate = @to_default_rate
     (@value * to_default_rate / target_to_default_rate).to_f
   end
 
   def list_conventable
-    conventable_list=Array.new
-    conventable_items=UnitBackend.where(kind: @kind)
+    conventable_list = Array.new
+    conventable_items = UnitBackend.where(kind: @kind)
     conventable_items.each do |item|
       conventable_list << item.name
     end
