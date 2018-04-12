@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
+  has_many :product_on_sells
   validates :count,numericality: {:greater_than_or_equal_to => 0,message: "Pruduct number couldn't less then 0"}
   validates :name,uniqueness: true
+
   def self.add_inventory product_id,count
     if count.class == Integer
       l=Product.find(product_id)
