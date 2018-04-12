@@ -7,7 +7,6 @@ class Unit
           else
             UnitBackend.where(kind: kind_name)
           end
-
     list = Array.new
     if res.none?
       raise Exception.new("kind #{kind_name} not found")

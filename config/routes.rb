@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'product/home'
+
+  get 'product/search'
+
+  get 'product/category'
+
   root 'static_pages#home'
 
   get '/about', to: 'static_pages#about'
