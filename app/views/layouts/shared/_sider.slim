@@ -1,0 +1,9 @@
+div.col-lg-3 id="sider"
+  h1 My Shop Name
+
+  - ! @carts.nil?
+  == render 'layouts/shared/cart'
+  p start debug
+  == render 'layouts/shared/category'
+
+

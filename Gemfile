@@ -7,12 +7,17 @@ end
 
 gem 'activeadmin'
 gem 'carrierwave'
-gem 'gcloud', '~> 0.23.0'
+gem 'carrierwave-google-storage'
+gem 'slim-rails'
+
+gem "mime-types"
 # Plus integrations with:
 gem 'devise'
 gem 'cancan' # or cancancan
 gem 'draper'
 gem 'pundit'
+gem 'currency_select'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'

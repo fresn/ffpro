@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Customer: one
+  ProductOnSell: one
+  count: one
+  discount: 1.5
+
+two:
+  Customer: two
+  ProductOnSell: two
+  count: two
+  discount: 1.5

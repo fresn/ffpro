@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412200241) do
+ActiveRecord::Schema.define(version: 20180417180310) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20180412200241) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "product_on_sell_id"
+    t.string "product_name"
+    t.integer "count"
+    t.float "discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customer_details", force: :cascade do |t|
     t.string "first"
     t.string "last"
@@ -73,10 +83,21 @@ ActiveRecord::Schema.define(version: 20180412200241) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "invoice_items", force: :cascade do |t|
+    t.integer "ProductOnSell_id"
+    t.integer "count"
+    t.float "discount"
+    t.boolean "returned"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ProductOnSell_id"], name: "index_invoice_items_on_ProductOnSell_id"
+  end
+
   create_table "product_on_sells", force: :cascade do |t|
     t.integer "count"
     t.integer "product_id"
     t.text "description"
+    t.float "base_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_on_sells_on_product_id"

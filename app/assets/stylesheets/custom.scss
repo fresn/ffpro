@@ -15,6 +15,12 @@ h1{
   @extend .my-4
 }
 
+#sider{
+  form{
+    display: inline-flex;
+  }
+}
+
 footer{
   @extend .fixed-bottom
 }

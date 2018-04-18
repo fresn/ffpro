@@ -1,0 +1,22 @@
+div.card
+  div.card-header Shoping cart
+  ul.list-group.list-group-flush
+    - @carts.each do |cart_item|
+      - if cart_item[:total]
+        li.list-group-item.d-flex.justify-content-between.align-items-center
+          |Total:
+          = cart_item[:total].to_f.round(2).to_s
+          =form_tag '/carts/checkout'
+            =submit_tag :checkout,class:'btn btn-small'
+      - if cart_item[:product_name]
+        li.list-group-item.d-flex.justify-content-between.align-items-center = cart_item[:product_name]
+        li.list-group-item.d-flex.justify-content-between.align-items-center
+          |Price:
+          = cart_item[:base_price]
+        = form_tag '/carts/update', method: 'post'
+          = hidden_field_tag :product_on_sell_id, cart_item[:product_on_sell_id]
+          = number_field_tag :count, nil, {style: "width:50px", placeholder: cart_item[:count]}
+          = submit_tag :update, class: 'btn btn-small'
+          = submit_tag :delete, class: 'btn btn-small'
+    =debug @carts.inspect
+

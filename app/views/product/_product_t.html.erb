@@ -1,0 +1,28 @@
+<div class="row">
+  <% @products_on_sell.each do |product_on_sell| %>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <!--product name-->
+            <a href="#"><%= product_on_sell.product.name %></a>
+          </h4>
+          <!--selling price-->
+          <h5>$<%= product_on_sell.base_price %></h5>
+          <!--shot_description-->
+          <p class="card-text"><%= product_on_sell.product.shot_description %></p>
+        </div>
+        <div class="card-footer">
+          <%= form_tag("/carts/create", method: "post") do %>
+            <%= hidden_field_tag(:product_name, product_on_sell.product.name) %>
+            <%= hidden_field_tag(:product_on_sell_id, product_on_sell.id) %>
+            <%= submit_tag("Add to cart", class: "btn btn-info") %>
+            <%= number_field_tag(:count, 1, {style: "width: 50px", placeholder: 1}) %>
+          <% end %>
+          <small class="text-muted">&#9733; &#9733; &#9733; &#9733;</small>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
